@@ -1,13 +1,16 @@
+
+#%% Import Code
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import sklearn as sk
 
-#%% Configuration
+#%% Define Configuration
 INPUT_PATH = Path('')
 
-#%% Import Dataset
+#%% Import Data
 SUS = pd.read_excel(INPUT_PATH,
                     dtype={'Region': str,
                            'Top_Account_Nme': str,
