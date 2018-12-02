@@ -30,6 +30,8 @@ predictors = raw_df[['Region',
                      'Occurrence_Cde',
                      'Age_Bucket']]
 
+regressors = raw_df[['Year', 'POP']]
+
 predictors['Region'] = predictors['Region'].astype(str)
 predictors['Top_Account_Nme'] = predictors['Top_Account_Nme'].astype(str)
 predictors['Claim_Office_Cde'] = predictors['Claim_Office_Cde'].astype(str)
