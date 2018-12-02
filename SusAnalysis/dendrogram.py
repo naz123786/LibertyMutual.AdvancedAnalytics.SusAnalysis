@@ -3,7 +3,7 @@
 
 
 #%% Define Configuration
-INPUT_PATH = Path('')
+INPUT_PATH = ''
 
 
 #%% Import Code
