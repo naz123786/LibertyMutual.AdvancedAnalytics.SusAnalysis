@@ -2,6 +2,10 @@
 """
 
 
+#%% Define Configuration
+INPUT_PATH = Path('')
+
+
 #%% Import Code
 from pathlib import Path
 
@@ -9,10 +13,6 @@ import numpy as np
 import pandas as pd
 import sklearn as sk
 import seaborn as sns
-
-
-#%% Define Configuration
-INPUT_PATH = Path('')
 
 
 #%% Read Data
