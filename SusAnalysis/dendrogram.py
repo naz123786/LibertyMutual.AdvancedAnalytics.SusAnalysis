@@ -49,7 +49,7 @@ regressor = data['POP']
 
 #%% Rank Features (filter approach)
 scores = mutual_info_classif(predictors, regressor, discrete_features=True)
-scores = dict(zip(predictors.columns, scores))
+scores = {k: v for k, v in zip(predictors.columns, scores)}
 scores = list(sorted(scores, key=lambda x: x[1]))
 
 print(scores)
