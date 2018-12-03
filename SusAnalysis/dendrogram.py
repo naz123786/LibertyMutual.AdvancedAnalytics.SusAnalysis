@@ -48,6 +48,7 @@ regressor = data['POP']
 
 #%% Rank Features (filter approach)
 scores = mutual_info_classif(predictors, regressor, discrete_features=True)
+
 scores = {k: v for k, v in zip(predictors.columns, scores)}
 scores = list(reversed(sorted(scores.items(), key=lambda x: x[1])))
 
@@ -59,6 +60,7 @@ model = FeatureAgglomeration()
 model = model.fit(predictors)
 
 def plot_dendrogram(model, **kwargs):
+    """https://github.com/scikit-learn/scikit-learn/blob/70cf4a676caa2d2dad2e3f6e4478d64bcb0506f7/examples/cluster/plot_hierarchical_clustering_dendrogram.py"""
 
     # Children of hierarchical clustering
     children = model.children_
