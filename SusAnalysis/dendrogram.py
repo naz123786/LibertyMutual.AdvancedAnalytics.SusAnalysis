@@ -7,14 +7,13 @@ INPUT_PATH = ''
 
 
 #%% Import Code
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
-import sklearn as sk
-import seaborn as sns
-
+from scipy.cluster.hierarchy import dendrogram
 from sklearn.feature_selection import mutual_info_classif
+from sklearn.cluster import FeatureAgglomeration
+import matplotlib.pyplot as plt
+
 
 
 #%% Read Data
@@ -55,4 +54,28 @@ scores = list(reversed(sorted(scores.items(), key=lambda x: x[1])))
 print(scores)
 
 
-#%%
+#%% Feature Agglomeration (filter approach)
+model = FeatureAgglomeration()
+model = model.fit(predictors)
+
+def plot_dendrogram(model, **kwargs):
+
+    # Children of hierarchical clustering
+    children = model.children_
+
+    # Distances between each pair of children
+    # Since we don't have this information, we can use a uniform one for plotting
+    distance = np.arange(children.shape[0])
+
+    # The number of observations contained in each cluster level
+    no_of_observations = np.arange(2, children.shape[0]+2)
+
+    # Create linkage matrix and then plot the dendrogram
+    linkage_matrix = np.column_stack([children, distance, no_of_observations]).astype(float)
+
+    # Plot the corresponding dendrogram
+    dendrogram(linkage_matrix, **kwargs)
+
+plt.title('Feature Agglomeration')
+plot_dendrogram(model, labels=model.labels_)
+plt.show()
