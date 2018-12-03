@@ -14,6 +14,8 @@ import pandas as pd
 import sklearn as sk
 import seaborn as sns
 
+from sklearn.feature_selection import mutual_info_classif
+
 
 #%% Read Data
 raw_df = pd.read_excel(INPUT_PATH)
@@ -30,7 +32,7 @@ raw_df = raw_df[['Region',
                  'Age_Bucket',
                  'Year',
                  'POP']]
-raw_df = raw_df.astype(str)
+raw_df = raw_df.astype('category')
 
 predictors = raw_df[['Region',
                      'Top_Account_Nme',
@@ -47,4 +49,4 @@ predictors = raw_df[['Region',
 regressors = raw_df[['POP']]
 
 
-#%% Rank Feature
+#%% Rank Features (filter approach)
