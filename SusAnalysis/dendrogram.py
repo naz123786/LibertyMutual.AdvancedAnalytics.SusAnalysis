@@ -17,7 +17,9 @@ import matplotlib.pyplot as plt
 
 
 #%% Read Data
-data = pd.read_excel(INPUT_PATH)
+raw = pd.read_excel(INPUT_PATH)
+
+data = raw
 data = data[['Region',
              'Top_Account_Nme',
              'Marital_Status_Cde',
